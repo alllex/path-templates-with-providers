@@ -28,12 +28,12 @@ System.out.println(lazyPath.get());
 It is questionable whether the "slash dance" `/\{}` inside the template string is more readable than an explicit `zip` call.
 However, the underlying mechanism can be used for more things.
 
-We could introduce a general `PSTR` (Provider string) template processor that behaves exactly the same as the default `STR` one, but always returns a `Provider` and never eagerly evaluates the template expressions.
+We could introduce a more general `PSTR` (Provider string) template processor that behaves exactly the same as the default `STR` one, but always returns a `Provider` and never eagerly evaluates the template expressions.
 
 ```java
 Provider<String> time = myTask.getTimeOutput();
 
-outputFile.write(PSTR."""
+outputContent.set(PSTR."""
     This is a custom report from a custom task
     It contains some execution time: \{time}
     But the resulting multi-line string is computed lazily,
